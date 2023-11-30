@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./assets/css/style.css"/>
+    <title>Weather Dashboard</title>
+</head>
+
+<body>
+    <header class="d-flex justify-content-center align-items-center">
+        <h1>Weather Dashboard</h1>
+    </header>
+    <img src="./Assets/images/Sunset.jpg" class="hero-image" alt="Sunset">
+
+    <div class="container-fluid">
+        <div class="row">
+            <aside class="col-lg-3 bg-light">
+                <h2>Search for a City:</h2>
+                <input type="text" class="form-control" id="city-input" placeholder="Enter city name">
+                <button class="btn btn-primary mt-2 btn-block" id="search-button">Search</button>
+            </aside>
+
+            <div class="col-lg-9">
+                <div class="custom-box"></div>
+                <h3>5-Day Forecast:</h3>
+                <div class="card-deck">
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Day 1</h5>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Day 2</h5>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Day 3</h5>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Day 4</h5>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title">Day 5</h5>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <script src="./assets/js/script.js"></script>
+</body>
+
+</html>
