@@ -1,0 +1,40 @@
+header {
+    background-color: lightpink;
+    color: grey;
+    padding: 10px;
+    font-size: medium;
+    border-radius: 10px 10px 0px 0px;
+}
+
+h2 {
+    padding-top: 10px;
+}
+
+.btn {
+    background-color: lightpink;
+    color: grey;
+    padding: 10px;
+    font-size: medium;
+    border-color: grey;
+}
+
+.btn:hover {
+    background-color: lightpink;
+    color: grey;
+    padding: 10px;
+    font-size: medium;
+    opacity: 0.7;
+    border-color: none;
+}
+
+.custom-box {
+    height: 200px;
+    border: 2px solid black;
+    margin-top: 20px;
+}
+
+.hero-image {
+    height: 200px;
+    width: 100%;
+    object-fit: cover;
+}
