@@ -50,9 +50,10 @@ ul li:hover {
 }
 
 .custom-box {
-    height: 200px;
+    height: 225px;
     border: 2px solid black;
     margin-top: 20px;
+    text-align: center;
 }
 
 .hero-image {
