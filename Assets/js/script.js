@@ -17,7 +17,7 @@ $('#search-button').click(function() {
             var temperature = data.main.temp;
 
             // Convert the temperature from Kelvin to Fahrenheit
-            var temperature = data.main.temp * 9/5 - 459.67;
+            var temperature = Math.round(data.main.temp * 9/5 - 459.67);
 
             var humidity = data.main.humidity;
             var windSpeed = data.wind.speed;
@@ -35,6 +35,38 @@ $('#search-button').click(function() {
             customBox.append('<p>Temp: ' + temperature + '°F</p>');
             customBox.append('<p>Humidity: ' + humidity + '%</p>');
             customBox.append('<p>Wind Speed: ' + windSpeed + ' MPH</p>');
+        });
+    
+    fetch('http://api.openweathermap.org/data/2.5/forecast?q=' + city + '&appid=' + APIKey)
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(data) {
+            // Loop through the list of forecasts
+            for (var i = 0; i < data.list.length; i += 8) {
+                var forecast = data.list[i];
+
+                var date = new Date(forecast.dt * 1000);
+                var formattedDate = (date.getMonth()+1) + '/' + date.getDate() + '/' + date.getFullYear();
+
+                var iconUrl = "http://openweathermap.org/img/w/" + forecast.weather[0].icon + ".png";
+                var temperature = Math.round(forecast.main.temp * 9/5 - 459.67);
+                var humidity = forecast.main.humidity;
+                var windSpeed = forecast.wind.speed;
+
+                // Select the card for the day
+                var card = $('.card').eq(i / 8);
+
+                // Clear the card
+                card.empty();
+
+                // Append the forecast to the card
+                card.append('<h5 class="card-title">' + formattedDate + '</h5>');
+                card.append('<img class="weather-icon" src="' + iconUrl + '" alt="Weather icon">');
+                card.append('<p>Temp: ' + temperature + '°F</p>');
+                card.append('<p>Humidity: ' + humidity + '%</p>');
+                card.append('<p>Wind Speed: ' + windSpeed + ' MPH</p>');
+            }
         });
 });
 
@@ -73,7 +105,7 @@ $(document).on('click', '#city-list li', function() {
             var temperature = data.main.temp;
 
             // Convert the temperature from Kelvin to Fahrenheit
-            var temperature = data.main.temp * 9/5 - 459.67;
+            var temperature = Math.round(data.main.temp * 9/5 - 459.67);
 
             var humidity = data.main.humidity;
             var windSpeed = data.wind.speed;
@@ -106,7 +138,8 @@ $(document).on('click', '#city-list li', function() {
                 var temperature = forecast.main.temp;
 
                 // Convert the temperature from Kelvin to Fahrenheit
-                var temperature = forecast.main.temp * 9/5 - 459.67;
+                var temperature = Math.round(forecast.main.temp * 9/5 - 459.67);
+
                 var humidity = forecast.main.humidity;
                 var windSpeed = forecast.wind.speed;
 
@@ -117,8 +150,8 @@ $(document).on('click', '#city-list li', function() {
                 card.empty();
 
                 // Append the forecast to the card
-                card.append('<h5 class="card-title">' + city + ' (' + formattedDate + ')' + '</h5>');
-                card.append('<img src="' + iconUrl + '" alt="Weather icon">');
+                card.append('<h5 class="card-title">' + formattedDate + '</h5>');
+                card.append('<img class="weather-icon" src="' + iconUrl + '" alt="Weather icon">');
                 card.append('<p>Temp: ' + temperature + '°F</p>');
                 card.append('<p>Humidity: ' + humidity + '%</p>');
                 card.append('<p>Wind Speed: ' + windSpeed + ' MPH</p>');
