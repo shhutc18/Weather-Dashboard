@@ -1,3 +1,7 @@
+/* CSS has been organized to follow semantic structure */
+
+/* Element Selectors */
+
 header {
     background-color: lightpink;
     color: grey;
@@ -32,6 +36,8 @@ ul li:hover {
     opacity: 0.7;
 }
 
+/* Class Selectors */
+
 .btn {
     background-color: lightpink;
     color: grey;
@@ -60,4 +66,19 @@ ul li:hover {
     height: 200px;
     width: 100%;
     object-fit: cover;
+}
+
+.weather-icon {
+    width: 60px;
+    height: 60px;
+}
+
+.card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    background-color: lightpink;
+    border: 2px solid black;
 }
