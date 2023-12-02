@@ -14,7 +14,7 @@ To use this webpage, the user can type any city into the search bar. Upon clicki
 
 ## Credits
 
-Code was created and commented by myself. I referced the content we learned in class for this assignment.
+Code was created and commented by myself. I referenced the content we learned in class for this assignment.
 
 ## Link
 
