@@ -7,13 +7,13 @@ var customBox = $('.custom-box');
 $('#search-button').click(function() {
     var city = cityInput.val();
 
-    fetch('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + APIKey)
+    fetch('https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + APIKey)
         .then(function(response) {
             return response.json();
         })
         .then(function(data) {
             var weather = data.weather[0].description;
-            var iconUrl = "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
+            var iconUrl = "https://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
             var temperature = data.main.temp;
 
             // Convert the temperature from Kelvin to Fahrenheit
@@ -39,7 +39,7 @@ $('#search-button').click(function() {
         });
 
     // This will fetch the forecast data for the next 5 days and display it in the card deck
-    fetch('http://api.openweathermap.org/data/2.5/forecast?q=' + city + '&appid=' + APIKey)
+    fetch('https://api.openweathermap.org/data/2.5/forecast?q=' + city + '&appid=' + APIKey)
         .then(function(response) {
             return response.json();
         })
@@ -51,7 +51,7 @@ $('#search-button').click(function() {
                 var date = dayjs();
                 var formattedDate = date.format('M/D/YYYY');
 
-                var iconUrl = "http://openweathermap.org/img/w/" + forecast.weather[0].icon + ".png";
+                var iconUrl = "https://openweathermap.org/img/w/" + forecast.weather[0].icon + ".png";
                 var temperature = Math.round(forecast.main.temp * 9/5 - 459.67);
                 var humidity = forecast.main.humidity;
                 var windSpeed = forecast.wind.speed;
@@ -97,13 +97,13 @@ searchButton.click(function() {
 $(document).on('click', '#city-list li', function() {
     var city = $(this).text();
 
-    fetch('http://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + APIKey)
+    fetch('https://api.openweathermap.org/data/2.5/weather?q=' + city + '&appid=' + APIKey)
         .then(function(response) {
             return response.json();
         })
         .then(function(data) {
             var weather = data.weather[0].description;
-            var iconUrl = "http://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
+            var iconUrl = "https://openweathermap.org/img/w/" + data.weather[0].icon + ".png";
             var temperature = data.main.temp;
             var temperature = Math.round(data.main.temp * 9/5 - 459.67);
             var humidity = data.main.humidity;
@@ -118,7 +118,7 @@ $(document).on('click', '#city-list li', function() {
             customBox.append('<p>Wind Speed: ' + windSpeed + ' MPH</p>');
         });
 
-    fetch('http://api.openweathermap.org/data/2.5/forecast?q=' + city + '&appid=' + APIKey)
+    fetch('https://api.openweathermap.org/data/2.5/forecast?q=' + city + '&appid=' + APIKey)
         .then(function(response) {
             return response.json();
         })
@@ -127,7 +127,7 @@ $(document).on('click', '#city-list li', function() {
                 var forecast = data.list[i];
                 var date = new Date(forecast.dt * 1000);
                 var formattedDate = (date.getMonth()+1) + '/' + date.getDate() + '/' + date.getFullYear();
-                var iconUrl = "http://openweathermap.org/img/w/" + forecast.weather[0].icon + ".png";
+                var iconUrl = "https://openweathermap.org/img/w/" + forecast.weather[0].icon + ".png";
                 var temperature = forecast.main.temp;
                 var temperature = Math.round(forecast.main.temp * 9/5 - 459.67);
                 var humidity = forecast.main.humidity;
