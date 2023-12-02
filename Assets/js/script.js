@@ -3,7 +3,7 @@ var APIKey = "7af8b9762a8ee9fd0865deb0b51f559f";
 var cityInput = $('#city-input');
 var customBox = $('.custom-box');
 
-// Adds an event listener to the search button
+// When the user clicks the search button, get the city name and fetch the weather data
 $('#search-button').click(function() {
     var city = cityInput.val();
 
@@ -17,26 +17,28 @@ $('#search-button').click(function() {
             var temperature = data.main.temp;
 
             // Convert the temperature from Kelvin to Fahrenheit
+            // Round to nearest whole number
             var temperature = Math.round(data.main.temp * 9/5 - 459.67);
 
             var humidity = data.main.humidity;
             var windSpeed = data.wind.speed;
 
-            // Create a new Date object and format it
-            var date = new Date();
-            var formattedDate = (date.getMonth()+1) + '/' + date.getDate() + '/' + date.getFullYear();
+            // Create a new Date object using Day.js
+            var date = dayjs();
+            var formattedDate = date.format('M/D/YYYY');
 
-            // Clear the customBox
+            // Clear the customBox where the current weather will be displayed
             customBox.empty();
 
-            // Append the data to the customBox
+            // Append the data to the customBox and display current weather
             customBox.append('<h2>' + city + ' (' + formattedDate + ')' + '</h2>');
             customBox.append('<img src="' + iconUrl + '" alt="Weather icon">');
             customBox.append('<p>Temp: ' + temperature + '°F</p>');
             customBox.append('<p>Humidity: ' + humidity + '%</p>');
             customBox.append('<p>Wind Speed: ' + windSpeed + ' MPH</p>');
         });
-    
+
+    // This will fetch the forecast data for the next 5 days and display it in the card deck
     fetch('http://api.openweathermap.org/data/2.5/forecast?q=' + city + '&appid=' + APIKey)
         .then(function(response) {
             return response.json();
@@ -46,8 +48,8 @@ $('#search-button').click(function() {
             for (var i = 0; i < data.list.length; i += 8) {
                 var forecast = data.list[i];
 
-                var date = new Date(forecast.dt * 1000);
-                var formattedDate = (date.getMonth()+1) + '/' + date.getDate() + '/' + date.getFullYear();
+                var date = dayjs();
+                var formattedDate = date.format('M/D/YYYY');
 
                 var iconUrl = "http://openweathermap.org/img/w/" + forecast.weather[0].icon + ".png";
                 var temperature = Math.round(forecast.main.temp * 9/5 - 459.67);
@@ -110,9 +112,10 @@ $(document).on('click', '#city-list li', function() {
             var humidity = data.main.humidity;
             var windSpeed = data.wind.speed;
 
-            var date = new Date();
-            var formattedDate = (date.getMonth()+1) + '/' + date.getDate() + '/' + date.getFullYear();
-
+            // Create a new Date object using Day.js
+            var date = dayjs();
+            var formattedDate = date.format('M/D/YYYY');
+            
             customBox.empty();
 
             customBox.append('<h2>' + city + ' (' + formattedDate + ')' + '</h2>');
