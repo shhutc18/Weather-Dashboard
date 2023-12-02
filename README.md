@@ -18,7 +18,7 @@ Code was created and commented by myself. I referced the content we learned in c
 
 ## Link
 
-<!-- Link to DEPLOYED application -->
+https://shhutc18.github.io/Weather-Dashboard/
 
 ## Screenshot
 
